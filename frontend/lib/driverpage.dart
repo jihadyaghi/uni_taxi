@@ -39,7 +39,6 @@ class _DriverTripsPageState extends State<DriverPage> with SingleTickerProviderS
     });
 
     try {
-      // ✅ نفس list تبع الادمن بس بنبعت driverId كـ query
       final uri = Uri.https(baseHost, "/api/admin/trips/list", {
         "driverId": widget.driverId.toString(),
       });
@@ -69,7 +68,6 @@ class _DriverTripsPageState extends State<DriverPage> with SingleTickerProviderS
   List get assignedTrips {
     return trips.where((t) {
       final s = (t["status"] ?? "pending").toString();
-      // ✅ حسب نظامك: assigned هي اللي للسائق
       return s == "assigned" || s == "approved";
     }).toList();
   }
@@ -97,7 +95,6 @@ class _DriverTripsPageState extends State<DriverPage> with SingleTickerProviderS
       final body = {
         "tripId": tripId,
         "status": status,
-        // ✅ optional note
         "adminNote": "Updated by driver ${widget.driverId}",
       };
 
@@ -115,7 +112,7 @@ class _DriverTripsPageState extends State<DriverPage> with SingleTickerProviderS
 
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Trip #$tripId updated ✅")),
+          SnackBar(content: Text("Trip #$tripId updated ")),
         );
       } else {
         if (!mounted) return;
@@ -216,7 +213,7 @@ class _TripsListDriver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (trips.isEmpty) {
-      return const Center(child: Text("No trips 👌", style: TextStyle(color: Colors.black54)));
+      return const Center(child: Text("No trips", style: TextStyle(color: Colors.black54)));
     }
 
     return ListView.builder(
@@ -256,7 +253,7 @@ class _TripsListDriver extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.06),
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(999),
                     ),
                     child: Text(status, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),

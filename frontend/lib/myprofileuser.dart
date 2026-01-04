@@ -18,7 +18,6 @@ class MyProfilePage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Hero
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
@@ -65,8 +64,6 @@ class MyProfilePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 14),
-
-            // Info Card (sample)
             _infoCard(
               title: "Personal Info",
               children: const [
@@ -77,8 +74,6 @@ class MyProfilePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 12),
-
-            // Preferences (sample)
             _infoCard(
               title: "Preferences",
               children: const [
@@ -88,8 +83,6 @@ class MyProfilePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 12),
-
-            // Actions
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(14),
@@ -108,7 +101,7 @@ class MyProfilePage extends StatelessWidget {
                     subtitle: "Later (no backend)",
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Edit Profile later ✅")),
+                        const SnackBar(content: Text("Edit Profile later ")),
                       );
                     },
                   ),
@@ -119,7 +112,7 @@ class MyProfilePage extends StatelessWidget {
                     subtitle: "Later (no backend)",
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Change Password later ✅")),
+                        const SnackBar(content: Text("Change Password later ")),
                       );
                     },
                   ),
@@ -128,8 +121,6 @@ class MyProfilePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 14),
-
-            // Footer tip
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(14),
@@ -144,7 +135,7 @@ class MyProfilePage extends StatelessWidget {
                   SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      "Tip: Later you can load profile data from backend بسهولة.",
+                      "Tip: Later you can load profile data from backend ",
                       style: TextStyle(color: Colors.black87),
                     ),
                   ),
@@ -234,10 +225,10 @@ class _infoRow extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(icon, size: 18, color: Colors.black),
+            child: Icon(icon, size: 18, color: Colors.white),
           ),
           const SizedBox(width: 10),
           Expanded(

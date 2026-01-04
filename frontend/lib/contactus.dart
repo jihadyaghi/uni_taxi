@@ -17,7 +17,6 @@ class ContactUsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Hero
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
@@ -54,15 +53,13 @@ class ContactUsPage extends StatelessWidget {
             ),
 
             const SizedBox(height: 14),
-
-            // Contact cards (sample)
             _contactCard(
               icon: Icons.email,
               title: "Email",
               subtitle: "support@unitaxi.com",
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Open email later ✅")),
+                  const SnackBar(content: Text("Open email later")),
                 );
               },
             ),
@@ -73,7 +70,7 @@ class ContactUsPage extends StatelessWidget {
               subtitle: "+961 70 000 000",
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Call later ✅")),
+                  const SnackBar(content: Text("Call later ")),
                 );
               },
             ),
@@ -84,14 +81,11 @@ class ContactUsPage extends StatelessWidget {
               subtitle: "Tripoli, Lebanon",
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Open map later ✅")),
+                  const SnackBar(content: Text("Open map later")),
                 );
               },
             ),
-
             const SizedBox(height: 14),
-
-            // Message form (no backend)
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(14),
@@ -128,7 +122,7 @@ class ContactUsPage extends StatelessWidget {
                     child: ElevatedButton.icon(
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Message sent (sample) ✅")),
+                          const SnackBar(content: Text("Message sent")),
                         );
                       },
                       icon: const Icon(Icons.send, color: Colors.black),

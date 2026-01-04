@@ -198,7 +198,7 @@ class _HomepageState extends State<Homepage> {
                 );
 
                 if (ok == true && mounted) {
-                  Navigator.pop(context); // يرجّع للـ Login
+                  Navigator.pop(context);
                 }
               },
             ),
@@ -469,7 +469,7 @@ class _FeatureCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.yellow.shade700,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(icon, size: 18, color: Colors.black),

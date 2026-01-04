@@ -34,8 +34,6 @@ class _BookRidePageState extends State<BookridePage> {
     dropController.dispose();
     super.dispose();
   }
-
-  // ✅ Snack helper
   void showSnack(String msg, {Color? bg}) {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -78,8 +76,6 @@ class _BookRidePageState extends State<BookridePage> {
 
   Future<void> createTrip() async {
     FocusScope.of(context).unfocus();
-
-    // ✅ Validation + Snack
     if (!_formKey.currentState!.validate()) {
       showSnack("Please fill all required fields");
       return;
@@ -95,8 +91,6 @@ class _BookRidePageState extends State<BookridePage> {
       isLoading = true;
       errorMsg = "";
     });
-
-    // ✅ Optional: sending snack
     showSnack("Sending trip request...", bg: Colors.black);
 
     final url = Uri.parse("https://backend-coral-eta-14.vercel.app/api/trips/create");
@@ -110,9 +104,6 @@ class _BookRidePageState extends State<BookridePage> {
       "paymentMethod": paymentMethod,
       "price": price,
     };
-
-    print("Create Trip body => ${jsonEncode(body)}");
-
     try {
       final res = await http
           .post(
@@ -127,13 +118,13 @@ class _BookRidePageState extends State<BookridePage> {
       if (res.statusCode == 201 || res.statusCode == 200) {
         if (!mounted) return;
 
-        showSnack("Trip created successfully ✅", bg: Colors.green);
+        showSnack("Trip created successfully ", bg: Colors.green);
 
         showDialog(
           context: context,
           barrierDismissible: false,
           builder: (_) => AlertDialog(
-            title: const Text("Trip created ✅"),
+            title: const Text("Trip created "),
             content: const Text("Your request is pending admin approval."),
             actions: [
               TextButton(
@@ -189,7 +180,6 @@ class _BookRidePageState extends State<BookridePage> {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              // Hero card
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -226,8 +216,6 @@ class _BookRidePageState extends State<BookridePage> {
               ),
 
               const SizedBox(height: 16),
-
-              // Form card
               Form(
                 key: _formKey,
                 child: Container(

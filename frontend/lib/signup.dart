@@ -61,7 +61,7 @@ class _SignupPageState extends State<SignupPage> {
     }
 
     setState(() {
-      isLoading = true;          // ✅ لازم true
+      isLoading = true;         
       errorsMessage = "";
     });
 
@@ -86,7 +86,7 @@ class _SignupPageState extends State<SignupPage> {
         _snack("Account created  Please login", success: true);
         await Future.delayed(const Duration(milliseconds: 700));
         if (!mounted) return;
-        Navigator.pop(context , email); // يرجع للـ Login
+        Navigator.pop(context , email); 
       } else {
         final msg = data["msg"] ?? data["message"] ?? "Signup failed";
         setState(() => errorsMessage = msg.toString());

@@ -57,8 +57,6 @@ class _AdminUsersPageState extends State<AdminUsersPage> {
     final name = (user["name"] ?? "-").toString();
     final email = (user["email"] ?? "-").toString();
     final role = (user["role"] ?? "user").toString();
-
-    // إذا هو driver أصلاً
     if (role == "driver") {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -162,8 +160,6 @@ class _AdminUsersPageState extends State<AdminUsersPage> {
     );
 
     if (ok != true) return;
-
-    // ✅ Call backend
     try {
       final uri = Uri.https(baseHost, "/api/admin/users/makedriver");
       final body = {
@@ -269,7 +265,7 @@ class _AdminUsersPageState extends State<AdminUsersPage> {
                                 width: 46,
                                 height: 46,
                                 decoration: BoxDecoration(
-                                  color: roleColor(role).withOpacity(0.18),
+                                  color: roleColor(role),
                                   borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: Icon(roleIcon(role), color: roleColor(role)),
@@ -289,7 +285,7 @@ class _AdminUsersPageState extends State<AdminUsersPage> {
                                         Container(
                                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                                           decoration: BoxDecoration(
-                                            color: roleColor(role).withOpacity(0.15),
+                                            color: roleColor(role),
                                             borderRadius: BorderRadius.circular(999),
                                           ),
                                           child: Text(

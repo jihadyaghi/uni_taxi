@@ -39,8 +39,6 @@ class _MyTripsPageState extends State<MyTripsPage> {
     );
 
     final res = await http.get(uri).timeout(const Duration(seconds: 15));
-    print("MYTRIPS STATUS => ${res.statusCode}");
-print("MYTRIPS BODY => ${res.body}");
     final data = jsonDecode(res.body);
 
     if (!mounted) return;
@@ -77,7 +75,7 @@ print("MYTRIPS BODY => ${res.body}");
       case "cancelled":
         return Colors.grey;
       default:
-        return Colors.orange; // pending
+        return Colors.orange;
     }
   }
 
@@ -107,7 +105,7 @@ print("MYTRIPS BODY => ${res.body}");
       case "cancelled":
         return "Cancelled";
       default:
-        return "Pending… waiting admin approval ⏳";
+        return "Pending… waiting admin approval ";
     }
   }
 
@@ -183,7 +181,7 @@ print("MYTRIPS BODY => ${res.body}");
                                     width: 42,
                                     height: 42,
                                     decoration: BoxDecoration(
-                                      color: statusColor(status).withOpacity(0.12),
+                                      color: statusColor(status),
                                       borderRadius: BorderRadius.circular(14),
                                     ),
                                     child: Icon(statusIcon(status), color: statusColor(status)),

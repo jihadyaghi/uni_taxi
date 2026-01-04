@@ -34,7 +34,6 @@ class _SettingsPageState extends State<SettingsPage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // ✅ Hero
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
@@ -71,8 +70,6 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
 
             const SizedBox(height: 14),
-
-            // ✅ Preferences
             _sectionTitle("Preferences"),
             _card(
               children: [
@@ -92,7 +89,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   onChanged: (v) {
                     setState(() => darkMode = v);
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Dark mode is sample only ✅")),
+                      const SnackBar(content: Text("Dark mode is sample only")),
                     );
                   },
                 ),
@@ -108,8 +105,6 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
 
             const SizedBox(height: 14),
-
-            // ✅ App Settings
             _sectionTitle("App Settings"),
             _card(
               children: [
@@ -134,8 +129,6 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
 
             const SizedBox(height: 14),
-
-            // ✅ Account
             _sectionTitle("Account"),
             _card(
               children: [
@@ -143,14 +136,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   icon: Icons.lock_reset,
                   title: "Change Password",
                   subtitle: "Later (no backend)",
-                  onTap: () => _snack("Change password later ✅"),
+                  onTap: () => _snack("Change password later"),
                 ),
                 const Divider(height: 10),
                 _actionTile(
                   icon: Icons.privacy_tip,
                   title: "Privacy Policy",
                   subtitle: "Sample page",
-                  onTap: () => _snack("Privacy policy later ✅"),
+                  onTap: () => _snack("Privacy policy later"),
                 ),
                 const Divider(height: 10),
                 _actionTile(
@@ -163,8 +156,6 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
 
             const SizedBox(height: 14),
-
-            // ✅ Danger zone
             _sectionTitle("Danger Zone"),
             _card(
               children: [
@@ -180,9 +171,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
             const SizedBox(height: 16),
 
-            // footer
+            
             Text(
-              "UniTaxi • Settings (Sample)",
+              "UniTaxi • Settings",
               style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
             ),
           ],
@@ -190,8 +181,6 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
-
-  // ---------- UI Helpers ----------
   Widget _sectionTitle(String t) {
     return Align(
       alignment: Alignment.centerLeft,
@@ -252,7 +241,6 @@ class _SettingsPageState extends State<SettingsPage> {
         Switch(
           value: value,
           onChanged: onChanged,
-          activeColor: Colors.black,
           activeTrackColor: Colors.yellow.shade700,
         ),
       ],
@@ -309,7 +297,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: danger ? Colors.red.withOpacity(0.12) : Colors.yellow.shade100,
+                color: danger ? Colors.red : Colors.yellow.shade100,
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Icon(icon, color: danger ? Colors.red : Colors.black, size: 20),
@@ -334,8 +322,6 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
-
-  // ---------- Actions ----------
   void _snack(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
   }

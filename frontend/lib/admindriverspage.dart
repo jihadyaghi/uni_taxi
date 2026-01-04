@@ -72,7 +72,6 @@ class _AdminDriversPageState extends State<AdminDriversPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // ✅ driver header
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
@@ -94,7 +93,7 @@ class _AdminDriversPageState extends State<AdminDriversPage> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
-                        color: isActive ? Colors.green.withOpacity(0.15) : Colors.red.withOpacity(0.15),
+                        color: isActive ? Colors.green : Colors.red,
                         borderRadius: BorderRadius.circular(999),
                       ),
                       child: Text(
@@ -182,7 +181,7 @@ class _AdminDriversPageState extends State<AdminDriversPage> {
 
       if (res.statusCode == 200 && (data["ok"] == true || data["ok"] == null)) {
         if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Driver updated ✅")));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Driver updated")));
         fetchDrivers();
       } else {
         if (!mounted) return;
@@ -269,7 +268,6 @@ class _AdminDriversPageState extends State<AdminDriversPage> {
 
       body: Column(
         children: [
-          // ✅ top hero + search
           Container(
             width: double.infinity,
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
@@ -356,7 +354,7 @@ class _AdminDriversPageState extends State<AdminDriversPage> {
                                       width: 46,
                                       height: 46,
                                       decoration: BoxDecoration(
-                                        color: statusColor(active).withOpacity(0.15),
+                                        color: statusColor(active),
                                         borderRadius: BorderRadius.circular(16),
                                       ),
                                       child: Icon(
@@ -372,8 +370,8 @@ class _AdminDriversPageState extends State<AdminDriversPage> {
                                         children: [
                                           Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
                                           const SizedBox(height: 4),
-                                          Text("📞 $phone", style: const TextStyle(color: Colors.black54, fontSize: 12)),
-                                          Text("🚗 $car • $plate",
+                                          Text(" $phone", style: const TextStyle(color: Colors.black54, fontSize: 12)),
+                                          Text(" $car • $plate",
                                               style: const TextStyle(color: Colors.black54, fontSize: 12)),
                                         ],
                                       ),

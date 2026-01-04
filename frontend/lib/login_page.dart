@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/admindashboard.dart';
 import 'package:frontend/driverpage.dart';
 import 'package:frontend/homepage.dart';
+import 'package:frontend/signup.dart';
 import 'package:http/http.dart' as http;
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -40,8 +41,6 @@ class _LoginPageState extends State<LoginPage> {
 
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
-
-    // ✅ Empty fields
     if (email.isEmpty || password.isEmpty) {
       _snack("Please enter email and password");
       return;
@@ -151,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
 
-                      // (اختياري) إذا بدك كمان تعرض error تحت
+                       
                       if (errorsMessage.isNotEmpty) ...[
                         const SizedBox(height: 10),
                         Text(
@@ -190,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 15),
                       TextButton(
                         onPressed: () {
-                          
+                          Navigator.push(context, MaterialPageRoute(builder: (_)=>SignupPage()));
                         },
                         child: const Text("Don't have an account? Sign Up"),
                       ),

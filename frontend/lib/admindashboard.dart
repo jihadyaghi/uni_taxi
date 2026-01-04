@@ -24,7 +24,7 @@ class AdminDashboard extends StatelessWidget {
             tooltip: "Refresh",
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Refresh later ✅")),
+                const SnackBar(content: Text("Refresh later")),
               );
             },
             icon: const Icon(Icons.refresh),
@@ -41,7 +41,6 @@ class AdminDashboard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // ✅ Welcome / Hero
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
@@ -72,7 +71,7 @@ class AdminDashboard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Welcome Admin 👋",
+                          "Welcome Admin",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
                         ),
                         SizedBox(height: 4),
@@ -93,8 +92,6 @@ class AdminDashboard extends StatelessWidget {
             ),
 
             const SizedBox(height: 16),
-
-            // ✅ Main cards (Trips, Drivers, Users)
             GridView.count(
               crossAxisCount: 2,
               shrinkWrap: true,
@@ -137,7 +134,7 @@ class AdminDashboard extends StatelessWidget {
                   subtitle: "How to use dashboard",
                   onTap: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Help later ✅")),
+                      const SnackBar(content: Text("Help later")),
                     );
                   },
                 ),
@@ -145,8 +142,6 @@ class AdminDashboard extends StatelessWidget {
             ),
 
             const SizedBox(height: 18),
-
-            // ✅ Quick actions
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(14),
@@ -210,8 +205,6 @@ class AdminDashboard extends StatelessWidget {
             ),
 
             const SizedBox(height: 18),
-
-            // ✅ Small footer tip
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(14),
@@ -261,8 +254,6 @@ class AdminDashboard extends StatelessWidget {
     }
   }
 }
-
-// ---------- Widgets ----------
 class _Pill extends StatelessWidget {
   final String text;
   final Color bg;
@@ -284,7 +275,6 @@ class _Pill extends StatelessWidget {
     );
   }
 }
-
 Widget _dashboardCard({
   required IconData icon,
   required String title,

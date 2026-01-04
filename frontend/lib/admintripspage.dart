@@ -102,7 +102,7 @@ class _AdminTripsPageState extends State<AdminTripsPage>
       case "cancelled":
         return Colors.grey;
       default:
-        return Colors.orange; // pending
+        return Colors.orange;
     }
   }
 
@@ -128,8 +128,6 @@ class _AdminTripsPageState extends State<AdminTripsPage>
     final s = v.toString();
     return s.replaceAll("T", " ").replaceAll(".000Z", "");
   }
-
-  /// ✅ update trip status / assign driver (uses your same backend file)
   Future<void> updateTrip({
     required int tripId,
     required String status,
@@ -181,8 +179,6 @@ class _AdminTripsPageState extends State<AdminTripsPage>
       );
     }
   }
-
-  /// ✅ fetch drivers (from users role='driver' API)
   Future<List> fetchDriversList() async {
     final uri = Uri.https(baseHost, "/api/admin/drivers/list");
     final res = await http.get(uri).timeout(const Duration(seconds: 15));
@@ -193,8 +189,6 @@ class _AdminTripsPageState extends State<AdminTripsPage>
     }
     throw Exception(data["msg"]?.toString() ?? "Failed to load drivers");
   }
-
-  /// ✅ Approve + Assign Dialog
   Future<void> approveAndAssign(int tripId) async {
     final noteCtrl = TextEditingController();
     int? selectedDriverId;
@@ -207,7 +201,6 @@ class _AdminTripsPageState extends State<AdminTripsPage>
       barrierDismissible: false,
       builder: (_) {
         return StatefulBuilder(builder: (context, setD) {
-          // load drivers once
           if (dialogLoading && drivers.isEmpty && dialogError.isEmpty) {
             fetchDriversList().then((list) {
               setD(() {
@@ -261,7 +254,7 @@ class _AdminTripsPageState extends State<AdminTripsPage>
                             TextField(
                               controller: noteCtrl,
                               decoration: const InputDecoration(
-                                labelText: "Admin note (optional)",
+                                labelText: "Admin note",
                                 border: OutlineInputBorder(),
                               ),
                             ),
@@ -283,8 +276,6 @@ class _AdminTripsPageState extends State<AdminTripsPage>
                   }
 
                   Navigator.pop(context);
-
-                  // ✅ هنا منستعمل status = assigned (حسب backend تبعك)
                   await updateTrip(
                     tripId: tripId,
                     status: "assigned",
@@ -304,8 +295,6 @@ class _AdminTripsPageState extends State<AdminTripsPage>
       },
     );
   }
-
-  /// ✅ Reject dialog
   Future<void> rejectTrip(int tripId) async {
     final noteController = TextEditingController();
 
@@ -321,7 +310,7 @@ class _AdminTripsPageState extends State<AdminTripsPage>
             TextField(
               controller: noteController,
               decoration: const InputDecoration(
-                labelText: "Admin note (optional)",
+                labelText: "Admin note",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -438,7 +427,7 @@ class _AdminTripsPageState extends State<AdminTripsPage>
                             statusColor: statusColor,
                             statusIcon: statusIcon,
                             niceDate: niceDate,
-                            onApprove: (id) => approveAndAssign(id), // ✅ assign driver
+                            onApprove: (id) => approveAndAssign(id), 
                             onReject: (id) => rejectTrip(id),
                           ),
                           _TripsList(
@@ -478,10 +467,9 @@ class _TripsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (trips.isEmpty) {
-      return const Center(child: Text("No trips here 👌", style: TextStyle(color: Colors.black54)));
+      return const Center(child: Text("No trips here ", style: TextStyle(color: Colors.black54)));
     }
-
-    return ListView.builder(
+ return ListView.builder(
       padding: const EdgeInsets.all(12),
       itemCount: trips.length,
       itemBuilder: (_, i) {
@@ -512,7 +500,7 @@ class _TripsList extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: statusColor(status).withOpacity(0.12),
+                      color: statusColor(status),
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: Icon(statusIcon(status), color: statusColor(status), size: 22),
@@ -540,7 +528,7 @@ class _TripsList extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
-                      color: statusColor(status).withOpacity(0.12),
+                      color: statusColor(status),
                       borderRadius: BorderRadius.circular(999),
                     ),
                     child: Text(
