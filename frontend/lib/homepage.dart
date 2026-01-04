@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/bookridepage.dart';
+import 'package:frontend/contactus.dart';
+import 'package:frontend/myprofileuser.dart';
+import 'package:frontend/mytripspage.dart';
+import 'package:frontend/settingspage.dart';
 class Homepage extends StatefulWidget {
   final int userId;
   const Homepage({super.key, required this.userId});
@@ -69,7 +74,7 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
 
-      // ✅ NEW DRAWER
+      
       drawer: Drawer(
         backgroundColor: Colors.yellow.shade50,
         child: ListView(
@@ -113,7 +118,7 @@ class _HomepageState extends State<Homepage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => BookridePage(userId: widget.userId),
+                    builder: (_) => BookridePage(userId:widget.userId),
                   ),
                 );
               },

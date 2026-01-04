@@ -72,11 +72,11 @@ class _LoginPageState extends State<LoginPage> {
         if (!mounted) return;
 
         if (role == "admin") {
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>Admindashboard()));
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>AdminDashboard()));
         } else if (role == "driver") {
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>Driverpage()));
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>DriverPage(driverId:userId)));
         } else {
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>Homepage()));
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>Homepage(userId:userId)));
         }
       } else {
         final msg = data["msg"] ?? data["message"] ?? "Email or password is incorrect";

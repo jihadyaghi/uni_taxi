@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:frontend/mytripspage.dart';
 import 'package:http/http.dart' as http;
-import 'package:unitaxi1/mytripspage.dart';
-
 class BookridePage extends StatefulWidget {
-  final int userId; // ✅ لازم يجي من login
+  final int userId; 
   const BookridePage({super.key, required this.userId});
 
   @override
@@ -210,7 +209,7 @@ class _BookRidePageState extends State<BookridePage> {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: const Icon(Icons.local_taxi, color: Colors.black, size: 34),
