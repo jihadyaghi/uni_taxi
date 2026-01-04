@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:frontend/admindashboard.dart';
+import 'package:frontend/driverpage.dart';
+import 'package:frontend/homepage.dart';
 import 'package:http/http.dart' as http;
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -69,11 +72,11 @@ class _LoginPageState extends State<LoginPage> {
         if (!mounted) return;
 
         if (role == "admin") {
-          
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>Admindashboard()));
         } else if (role == "driver") {
-          
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>Driverpage()));
         } else {
-          
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>Homepage()));
         }
       } else {
         final msg = data["msg"] ?? data["message"] ?? "Email or password is incorrect";
