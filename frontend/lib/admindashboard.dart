@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:unitaxi1/admindriverspage.dart';
-import 'package:unitaxi1/admintripspage.dart';
-import 'package:unitaxi1/adminuserspage.dart'; 
+import 'package:frontend/admindriverspage.dart';
+import 'package:frontend/admintripspage.dart';
+import 'package:frontend/adminuserspage.dart';
+ 
 
 class AdminDashboard extends StatelessWidget {
   const AdminDashboard({super.key});
